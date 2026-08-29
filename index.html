@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>THE VIP BAR — 名古屋・栄の紹介制カラオケバー</title>
+<meta name="description" content="名古屋・栄の紹介制カラオケバー。22:00–5:00 営業、日曜定休。ご紹介・ご予約はInstagram DMより。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&family=Shippori+Mincho:wght@400&family=Zen+Kaku+Gothic+Antique:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#050305;
+  --neon:#FF5C96;
+  --neon-soft:#F2A0BE;
+  --neon-dim:#8E4763;
+  --paper:#EDE4E8;
+  --mute:#7E6D76;
+  --hair:rgba(255,92,150,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  background:var(--void); color:var(--paper);
+  font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+
+/* ===== 泡(全画面固定・常時浮遊) ===== */
+#bubbles{ position:fixed; inset:0; z-index:5; pointer-events:none; mix-blend-mode:screen }
+
+.deck{ position:relative; z-index:1; height:100svh; overflow-y:scroll; scroll-snap-type:y mandatory; scrollbar-width:none }
+.deck::-webkit-scrollbar{display:none}
+
+.card{
+  position:relative; height:100svh;
+  scroll-snap-align:start; scroll-snap-stop:always;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(26px,7vw,64px); overflow:hidden;
+}
+100%{transform:scale(1.14) translate3d(1%,-2%,0)}}
+.card::after{
+  content:""; position:absolute; z-index:0; pointer-events:none;
+  left:50%; top:48%; width:min(88vw,560px); aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(255,92,150,.10) 0%, transparent 68%);
+  animation:throb 8s ease-in-out infinite;
+}
+@keyframes throb{0%,100%{opacity:.45}50%{opacity:1}}
+.card::before{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(92% 62% at 50% 50%, transparent 0%, rgba(5,3,5,.7) 62%, var(--void) 100%),
+    linear-gradient(180deg, var(--void) 0%, transparent 18%, transparent 80%, var(--void) 100%);
+}
+.card__in{ position:relative; z-index:8; width:100%; max-width:660px; margin:0 auto }
+
+/* ===== タイポ ===== */
+.kicker{
+  font-family:"Josefin Sans",sans-serif; font-size:clamp(13px,3.6vw,17px);
+  letter-spacing:.56em; text-transform:uppercase; color:var(--neon-soft);
+  margin-bottom:clamp(18px,4.4vw,28px); text-align:center;
+  text-indent:.56em;
+}
+.kicker::after{
+  content:""; display:block; width:34px; height:1px; margin:clamp(10px,2.6vw,14px) auto 0;
+  background:linear-gradient(90deg, transparent, var(--neon), transparent);
+}
+.head{
+  font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:200;
+  font-size:clamp(22px,6vw,36px); letter-spacing:.2em; line-height:1.65;
+  margin-bottom:clamp(16px,4vw,26px);
+}
+.body{
+  font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300;
+  font-size:clamp(13px,3.3vw,15px); line-height:2.35; letter-spacing:.14em;
+  color:#C9B9C1;
+}
+.rule{
+  width:100%; height:1px; margin:clamp(18px,4vw,26px) 0;
+  background:linear-gradient(90deg, transparent, var(--hair) 18%, var(--hair) 82%, transparent);
+}
+
+/* ===== 01 HERO ===== */
+.hero__logo{
+  width:min(90%,540px); display:block; margin:0 auto clamp(22px,5.5vw,34px);
+  filter:drop-shadow(0 0 28px rgba(255,92,150,.45));
+  animation:flick 9s ease-in-out infinite;
+}
+@keyframes flick{0%,93%,100%{opacity:1}94%{opacity:.68}95%{opacity:1}97%{opacity:.86}98%{opacity:1}}
+.hero__en{ text-align:center; font-family:"Josefin Sans",sans-serif; font-size:clamp(12px,3.2vw,15px); letter-spacing:.44em; color:var(--neon-soft); line-height:2.2 }
+.hero__acc{ display:inline-block; margin-top:.9em; font-size:.92em; color:var(--neon-soft); letter-spacing:.16em }
+.hero__jp{ text-align:center; margin-top:clamp(16px,4vw,24px); font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300; font-size:clamp(13px,3.4vw,15px); letter-spacing:.18em; color:#C9B9C1 }
+.hero__meta{ margin-top:clamp(24px,5.5vw,36px); text-align:center; font-family:"Josefin Sans",sans-serif; font-size:clamp(10px,2.6vw,12px); letter-spacing:.34em; color:var(--mute); line-height:2.2 }
+.cue{ position:absolute; left:50%; bottom:clamp(20px,5vh,38px); z-index:8; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; font-family:"Josefin Sans",sans-serif; font-size:9px; letter-spacing:.5em; color:var(--neon-dim) }
+.cue i{ display:block; width:1px; height:32px; background:linear-gradient(var(--neon-dim),transparent); animation:drop 2.4s ease-in-out infinite }
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ===== 店内 ===== */
+.slider{
+  display:flex; gap:clamp(10px,2.6vw,16px);
+  overflow-x:auto; scroll-snap-type:x mandatory;
+  scrollbar-width:none; -webkit-overflow-scrolling:touch;
+  padding-bottom:4px; margin:0 calc(clamp(26px,7vw,64px) * -1); padding-inline:clamp(26px,7vw,64px);
+}
+.slider::-webkit-scrollbar{ display:none }
+.slider figure{ flex:0 0 auto; width:min(72vw,300px); scroll-snap-align:center }
+.slider img{
+  width:100%; aspect-ratio:3/4; object-fit:cover; display:block;
+  border:1px solid var(--hair); box-shadow:0 0 34px rgba(255,92,150,.14);
+}
+.slider figcaption{
+  margin-top:10px; text-align:center;
+  font-family:"Josefin Sans",sans-serif; font-size:10px;
+  letter-spacing:.4em; color:var(--mute); text-transform:uppercase;
+}
+.slide-hint{
+  margin-top:clamp(14px,3.4vw,20px); text-align:center;
+  font-family:"Josefin Sans",sans-serif; font-size:10px;
+  letter-spacing:.42em; color:var(--neon-dim); text-transform:uppercase;
+}
+
+/* ===== STAFF(再構成) ===== */
+.staff{ display:flex; justify-content:center; gap:clamp(12px,4vw,28px) }
+.staff figure{ text-align:center; flex:1; max-width:150px }
+.staff .ring{
+  position:relative; width:100%; aspect-ratio:1; border-radius:50%;
+  padding:3px; background:conic-gradient(from 210deg, var(--neon), var(--neon-dim), var(--neon-soft), var(--neon));
+  box-shadow:0 0 26px rgba(255,92,150,.28);
+}
+.staff .ring img{ width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; border:2px solid var(--void) }
+.staff figcaption{
+  margin-top:clamp(10px,2.6vw,16px);
+  font-family:"Josefin Sans",sans-serif; font-size:clamp(12px,3.2vw,15px);
+  letter-spacing:.28em; color:var(--neon-soft);
+}
+
+/* ===== MENU(再構成) ===== */
+.charge{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:clamp(12px,3.2vw,18px) 0; border-top:1px solid var(--hair); border-bottom:1px solid var(--hair) }
+.charge b{ font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300; font-size:clamp(15px,4vw,19px); letter-spacing:.14em }
+.charge span{ font-family:"Josefin Sans",sans-serif; font-size:clamp(19px,5vw,26px); color:var(--neon) }
+.note{ font-size:clamp(10px,2.6vw,12px); color:var(--mute); letter-spacing:.1em; margin-top:10px }
+.list{ list-style:none; margin-top:clamp(16px,4vw,24px) }
+.list li{ display:flex; align-items:baseline; gap:10px; padding:8px 0; font-size:clamp(12px,3.1vw,14px) }
+.list .n{ letter-spacing:.1em; color:#C9B9C1 }
+.list .d{ flex:1; border-bottom:1px dotted rgba(255,92,150,.24); transform:translateY(-4px) }
+.list .p{ font-family:"Josefin Sans",sans-serif; font-size:clamp(13px,3.3vw,15px); color:var(--neon-soft); white-space:nowrap }
+.tax{ margin-top:clamp(16px,4vw,24px); padding-top:14px; border-top:1px solid var(--hair); font-family:"Josefin Sans",sans-serif; font-size:clamp(10px,2.6vw,12px); letter-spacing:.38em; color:var(--mute); text-align:center }
+
+/* ===== PAYMENT(再構成) ===== */
+.pay-group + .pay-group{ margin-top:clamp(18px,4.4vw,28px) }
+.pay-group h3{
+  font-family:"Josefin Sans",sans-serif; font-weight:400; font-size:clamp(11px,2.9vw,13px);
+  letter-spacing:.44em; text-transform:uppercase; color:var(--neon-dim);
+  margin-bottom:clamp(8px,2.2vw,12px);
+}
+.brands{ display:flex; flex-wrap:wrap; gap:clamp(7px,2vw,11px) }
+.bd{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:clamp(52px,14vw,64px); height:clamp(22px,6vw,26px);
+  border:1px solid var(--hair); border-radius:2px;
+  background:rgba(255,92,150,.03);
+}
+.bd svg{ width:78%; height:auto; fill:var(--neon-soft) }
+.bd svg text{ fill:var(--neon-soft) }
+
+.sub-note{ margin-top:clamp(8px,2.2vw,12px); font-size:clamp(10px,2.5vw,11.5px); color:var(--mute); letter-spacing:.08em }
+
+.chips{ display:flex; flex-wrap:wrap; gap:clamp(6px,1.8vw,10px) }
+.chips span{
+  font-family:"Josefin Sans",sans-serif; font-size:clamp(11px,2.9vw,13px);
+  letter-spacing:.08em; color:#C9B9C1;
+  padding:clamp(5px,1.4vw,7px) clamp(10px,2.6vw,14px);
+  border:1px solid var(--hair); border-radius:2px;
+}
+
+/* ===== PAYMENT パネル ===== */
+.pay-stack{ display:flex; flex-direction:column; gap:clamp(10px,2.6vw,16px); max-height:64svh; overflow-y:auto; padding-right:4px }
+.pay-stack::-webkit-scrollbar{ width:3px }
+.pay-stack::-webkit-scrollbar-thumb{ background:var(--hair) }
+.pay-panel{ border:1px solid var(--hair); background:rgba(255,255,255,.07);
+  padding:clamp(8px,2.2vw,12px); border-radius:2px }
+.pay-panel img{ width:100%; display:block; opacity:1;
+  filter:drop-shadow(0 0 1px rgba(255,255,255,.55)) }
+.pay-panel img{ width:100%; display:block }
+.pay-panel figcaption{
+  font-family:"Josefin Sans",sans-serif; font-size:clamp(9px,2.3vw,10.5px);
+  letter-spacing:.4em; text-transform:uppercase; color:var(--neon-soft);
+  text-align:center; margin-bottom:clamp(5px,1.4vw,8px);
+}
+
+.pays{ display:flex; flex-direction:column; gap:clamp(14px,3.4vw,22px);
+  background:#2E2A2E; border:1px solid var(--hair); border-radius:3px;
+  padding:clamp(16px,4vw,26px) clamp(12px,3.2vw,20px) }
+.pay-g h3{
+  font-family:"Josefin Sans",sans-serif; font-weight:300; font-size:clamp(10px,2.7vw,12px);
+  letter-spacing:.46em; text-transform:uppercase; color:#C99AAE;
+  text-align:center; margin-bottom:clamp(9px,2.4vw,13px);
+}
+.pay-row{
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  gap:clamp(9px,2.4vw,14px);
+}
+.pay-row img{
+  height:clamp(23px,6.2vw,29px); width:auto; display:block;
+  transition:transform .3s;
+}
+.pay-row img:hover{ transform:translateY(-2px) }
+
+/* ===== ACCESS / CTA ===== */
+.map{ width:100%; height:clamp(170px,28vh,250px); border:1px solid var(--hair);
+  filter:grayscale(.75) invert(.9) contrast(.88) sepia(.22) hue-rotate(290deg) brightness(.95);
+  margin-bottom:clamp(14px,3.4vw,20px) }
+.info dt{ font-family:"Josefin Sans",sans-serif; font-size:9px; letter-spacing:.46em; text-transform:uppercase; color:var(--neon-dim); margin-top:clamp(12px,3vw,18px) }
+.info dd{ font-size:clamp(12px,3.2vw,14px); letter-spacing:.1em; line-height:1.95; color:#C9B9C1; padding-top:5px }
+.info dd a{ color:var(--neon-soft); text-decoration:none; border-bottom:1px solid var(--hair) }
+.cta{ display:flex; flex-direction:column; gap:clamp(9px,2.4vw,13px); margin-top:clamp(20px,4.6vw,30px) }
+.cta a{
+  display:flex; align-items:center; gap:14px;
+  padding:clamp(13px,3.4vw,17px) clamp(16px,4.2vw,22px);
+  border:1px solid var(--hair); text-decoration:none; color:var(--paper);
+  background:linear-gradient(90deg, rgba(255,92,150,.07), transparent);
+  transition:border-color .35s, transform .35s, background .35s;
+}
+.cta a:hover,.cta a:focus-visible{ border-color:var(--neon); transform:translateX(4px); background:linear-gradient(90deg, rgba(255,92,150,.14), transparent) }
+.cta svg{ width:21px; height:21px; flex:none; fill:none; stroke:var(--neon-soft); stroke-width:1.5 }
+.cta svg .f{ fill:var(--neon-soft); stroke:none }
+.cta .l{ font-family:"Josefin Sans",sans-serif; font-size:10px; letter-spacing:.4em; text-transform:uppercase; color:var(--neon-dim); display:block }
+.cta .id{ font-family:"Josefin Sans",sans-serif; font-size:clamp(13px,3.4vw,15px); letter-spacing:.06em }
+.cta .arrow{ margin-left:auto; color:var(--neon-dim); font-family:"Josefin Sans",sans-serif }
+
+/* ===== ページャ ===== */
+.pager{ position:fixed; right:clamp(9px,2.4vw,16px); top:50%; transform:translateY(-50%); z-index:40; display:flex; flex-direction:column; gap:9px }
+.pager b{ display:block; width:5px; height:5px; border-radius:50%; background:rgba(255,92,150,.26); transition:background .4s, transform .4s }
+.pager b.on{ background:var(--neon); transform:scale(1.7) }
+
+.rv{opacity:0; transform:translateY(18px); transition:opacity .85s ease, transform .85s ease}
+.card.act .rv{opacity:1; transform:none}
+.card.act .rv:nth-child(2){transition-delay:.09s}
+.card.act .rv:nth-child(3){transition-delay:.18s}
+.card.act .rv:nth-child(4){transition-delay:.27s}
+.card.act .rv:nth-child(5){transition-delay:.36s}
+
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .hero__logo,.cue i,.card::after{animation:none}
+  #bubbles{display:none}
+  .deck{scroll-snap-type:none}
+}
+:focus-visible{outline:2px solid var(--neon); outline-offset:3px}
+
+/* ===== フォーム ===== */
+.or{ text-align:center; margin:clamp(16px,4vw,24px) 0 clamp(12px,3vw,18px);
+  font-family:"Josefin Sans",sans-serif; font-size:11px; letter-spacing:.5em; color:var(--neon-dim); text-transform:uppercase }
+.form{ display:flex; flex-direction:column; gap:clamp(9px,2.2vw,12px) }
+.f-label{ display:block; font-family:"Josefin Sans",sans-serif; font-size:9.5px;
+  letter-spacing:.4em; text-transform:uppercase; color:var(--neon-dim); margin-bottom:5px }
+.form input,.form select,.form textarea{
+  width:100%; background:rgba(255,92,150,.04); color:var(--paper);
+  border:1px solid var(--hair); border-radius:2px;
+  padding:clamp(8px,2.2vw,11px) clamp(10px,2.6vw,13px);
+  font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300;
+  font-size:clamp(13px,3.2vw,14px); letter-spacing:.06em;
+  transition:border-color .3s, background .3s }
+.form input::placeholder,.form textarea::placeholder{ color:#5E4E56 }
+.form input:focus,.form select:focus,.form textarea:focus{ outline:none; border-color:var(--neon); background:rgba(255,92,150,.08) }
+.form select{ appearance:none; -webkit-appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--neon-dim) 50%),linear-gradient(135deg,var(--neon-dim) 50%,transparent 50%);
+  background-position:calc(100% - 17px) 52%, calc(100% - 12px) 52%;
+  background-size:5px 5px,5px 5px; background-repeat:no-repeat }
+.form select option{ background:#140A10; color:var(--paper) }
+.form textarea{ resize:vertical; min-height:64px; line-height:1.85 }
+.f-send{ margin-top:4px; font-weight:300; display:flex; align-items:center; justify-content:center; gap:12px;
+  padding:clamp(12px,3.2vw,15px);
+  background:linear-gradient(90deg, rgba(255,92,150,.16), rgba(255,92,150,.06));
+  border:1px solid var(--neon); color:var(--paper); cursor:pointer;
+  font-family:"Zen Kaku Gothic Antique",sans-serif; font-size:clamp(13px,3.4vw,15px); letter-spacing:.24em;
+  transition:background .35s, letter-spacing .35s }
+.f-send:hover{ background:linear-gradient(90deg, rgba(255,92,150,.3), rgba(255,92,150,.12)); letter-spacing:.34em }
+.f-send span{ font-family:"Josefin Sans",sans-serif; color:var(--neon-soft) }
+.f-note{ font-size:10.5px; color:var(--mute); letter-spacing:.06em; text-align:center; line-height:1.8 }
+.f-note.ok{ color:var(--neon-soft) }
+</style>
+</head>
+<body>
+
+<canvas id="bubbles"></canvas>
+<div class="pager" id="pager"></div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 HERO -->
+  <section class="card">
+    <div class="card__in">
+      <img class="hero__logo rv" src="assets/logo.png" alt="THE V.I.P BAR">
+      <p class="hero__en rv">MEMBERS ONLY SONG BAR<br>IN SAKAE, NAGOYA</p>
+      <p class="hero__jp rv">名古屋・栄の紹介制カラオケバー<br><span class="hero__acc">終電を逃した夜も、朝5時まで。</span></p>
+      <p class="hero__meta rv">OPEN 22:00 – 5:00　L.O. 4:00<br>CLOSED SUNDAY</p>
+    </div>
+    <div class="cue"><span>SCROLL</span><i></i></div>
+  </section>
+
+  <!-- 02 CONCEPT -->
+  <section class="card">
+    <div class="card__in">
+      <p class="kicker rv">About</p>
+      <h2 class="head rv">紹介のある方だけ、<br>どうぞ。</h2>
+      <p class="body rv">
+        栄3丁目、プリンセス遠山ビルの5階。<br>
+        通っている方の紹介でだけ入れる、<br>
+        小さなカラオケバーです。<br><br>
+        歌っても、話しても、飲むだけでも。<br>
+        カラオケは LIVE DAM の最新機種。<br>
+        小計20万円から貸切も承ります。
+      </p>
+    </div>
+  </section>
+
+  <!-- 店内 -->
+  <section class="card">
+    <div class="card__in">
+      <p class="kicker rv">Interior</p>
+      <div class="slider rv" id="slider">
+        <figure><img src="assets/ext_building.jpg" alt="プリンセス遠山ビル 外観"><figcaption>Princess Toyama</figcaption></figure>
+        <figure><img src="assets/ext_signboard.jpg" alt="5階 案内看板"><figcaption>5F</figcaption></figure>
+        <figure><img src="assets/ext_door.jpg" alt="店舗入口"><figcaption>Entrance</figcaption></figure>
+        <figure><img src="assets/room1.jpg" alt="店内"><figcaption>Counter &amp; Sofa</figcaption></figure>
+      </div>
+      <p class="slide-hint rv">← swipe →</p>
+    </div>
+  </section>
+
+  <!-- STAFF -->
+  <section class="card">
+    <div class="card__in" style="text-align:center">
+      <p class="kicker rv">Staff</p>
+      <div class="staff rv">
+        <figure>
+          <div class="ring"><img src="assets/reina.jpg" alt="REINA"></div>
+          <figcaption>REINA</figcaption>
+        </figure>
+        <figure>
+          <div class="ring"><img src="assets/mizuki.jpg" alt="MIZUKI"></div>
+          <figcaption>MIZUKI</figcaption>
+        </figure>
+        <figure>
+          <div class="ring"><img src="assets/rua.jpg" alt="RUA"></div>
+          <figcaption>RUA</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 MENU -->
+  <section class="card">
+    <div class="card__in">
+      <p class="kicker rv">Menu</p>
+      <div class="rv">
+        <div class="charge"><b>チャージ（2時間）</b><span>¥5,000</span></div>
+        <p class="note">※ 延長は2時間ごとに ¥5,000</p>
+        <ul class="list">
+          <li><span class="n">茉莉花 ／ JAPAN</span><span class="d"></span><span class="p">¥3,000</span></li>
+          <li><span class="n">吉四六 ／ 中々 ／ メーカーズ</span><span class="d"></span><span class="p">¥10,000</span></li>
+          <li><span class="n">魔王</span><span class="d"></span><span class="p">¥25,000</span></li>
+          <li><span class="n">白州 ／ 響 ／ 山崎</span><span class="d"></span><span class="p">¥30,000</span></li>
+          <li><span class="n">カクテル 各種</span><span class="d"></span><span class="p">¥1,000</span></li>
+          <li><span class="n">ショット</span><span class="d"></span><span class="p">¥2,000〜</span></li>
+        </ul>
+        <p class="tax">Service 10% / Tax 10%</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 PAYMENT -->
+  <section class="card">
+    <div class="card__in">
+      <p class="kicker rv">Payment</p>
+      <div class="pays rv">
+        <div class="pay-g">
+          <h3>Credit card</h3>
+          <div class="pay-row">
+            <img src="assets/pay/visa.png" alt="VISA">
+            <img src="assets/pay/mastercard.png" alt="Mastercard">
+            <img src="assets/pay/jcb.png" alt="JCB">
+            <img src="assets/pay/amex.png" alt="American Express">
+            <img src="assets/pay/diners.png" alt="Diners Club">
+            <img src="assets/pay/discover.png" alt="Discover">
+            <img src="assets/pay/unionpay.png" alt="UnionPay">
+          </div>
+        </div>
+        <div class="pay-g">
+          <h3>E-money</h3>
+          <div class="pay-row">
+            <img src="assets/pay/id.png" alt="iD">
+            <img src="assets/pay/quicpay.png" alt="QUICPay">
+            <img src="assets/pay/edy.png" alt="楽天Edy">
+            <img src="assets/pay/waon.png" alt="WAON">
+            <img src="assets/pay/nanaco.png" alt="nanaco">
+            <img src="assets/pay/suica.png" alt="Suica">
+            <img src="assets/pay/pasmo.png" alt="PASMO">
+            <img src="assets/pay/icoca.png" alt="ICOCA">
+          </div>
+        </div>
+        <div class="pay-g">
+          <h3>QR payment</h3>
+          <div class="pay-row">
+            <img src="assets/pay/paypay.png" alt="PayPay">
+            <img src="assets/pay/dbarai.png" alt="d払い">
+            <img src="assets/pay/aupay.png" alt="au PAY">
+            <img src="assets/pay/rpay.png" alt="楽天ペイ">
+            <img src="assets/pay/merpay.png" alt="メルペイ">
+            <img src="assets/pay/yuchopay.png" alt="ゆうちょPay">
+            <img src="assets/pay/alipay.png" alt="Alipay">
+            <img src="assets/pay/wechat.png" alt="WeChat Pay">
+          </div>
+        </div>
+      </div>
+      <p class="note rv" style="text-align:center;margin-top:clamp(14px,3.4vw,20px)">タッチ決済対応／現金もご利用いただけます</p>
+    </div>
+  </section>
+
+  <!-- 07 ACCESS + CTA -->
+  <section class="card">
+    <div class="card__in">
+      <p class="kicker rv">Access</p>
+      <iframe class="map rv" title="THE VIP BAR の地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=35.16447,136.90616&hl=ja&z=17&output=embed"></iframe>
+      <dl class="info rv">
+        <dt>Address</dt>
+        <dd><a href="https://www.google.com/maps/search/?api=1&query=35.16447,136.90616" target="_blank" rel="noopener">名古屋市中区栄3-12-14<br>プリンセス遠山ビル 505</a></dd>
+        <dt>Hours</dt>
+        <dd>22:00 – 5:00（L.O. 4:00）／ 定休日 日曜</dd>
+        <dt>Parking</dt>
+        <dd>NPC24H 栄3丁目第2（徒歩3分）</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="card">
+    <div class="card__in">
+      <p class="kicker rv">Contact</p>
+      <p class="body rv">
+        ご来店のご予約、ご紹介パートナー制度、<br>
+        スタッフ募集についてのお問い合わせは<br>
+        SNSのDMにてお気軽にどうぞ。
+      </p>
+      <!-- 送信先: action に Formspree 等のURLを設定してください -->
+      <form class="form rv" id="contactForm" action="" method="POST">
+        <label><span class="f-label">お名前</span>
+          <input type="text" name="name" required placeholder="山田 太郎"></label>
+        <label><span class="f-label">ご連絡先</span>
+          <input type="text" name="contact" required placeholder="電話番号 / Instagram ID"></label>
+        <label><span class="f-label">ご用件</span>
+          <select name="subject" required>
+            <option value="">選択してください</option>
+            <option>ご来店のご予約</option>
+            <option>ご紹介パートナー制度</option>
+            <option>スタッフ応募</option>
+            <option>貸切のご相談</option>
+            <option>その他</option>
+          </select></label>
+        <label><span class="f-label">メッセージ</span>
+          <textarea name="message" rows="2" placeholder="ご希望の日時・人数など"></textarea></label>
+        <button type="submit" class="f-send">送信する<span>&rarr;</span></button>
+        <p class="f-note" id="formNote">お急ぎの方はDMからご連絡ください。</p>
+      </form>
+
+      <p class="or rv">or</p>
+
+      <div class="cta rv">
+        <a href="https://www.instagram.com/the_vip_bar" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4"/><circle cx="12" cy="12" r="4.5"/><circle class="f" cx="17.5" cy="6.5" r="1.1"/></svg>
+          <span><span class="l">Instagram</span><span class="id">@the_vip_bar</span></span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://www.tiktok.com/@the_vip_bar_official" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="f" d="M16.2 2.2h-2.9v13.1a2.7 2.7 0 1 1-2.2-2.65V9.7a5.75 5.75 0 1 0 5.1 5.7V8.9a6.6 6.6 0 0 0 3.9 1.26V7.2a3.85 3.85 0 0 1-3.9-3.9v-1.1z"/></svg>
+          <span><span class="l">TikTok</span><span class="id">@the_vip_bar_official</span></span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ===== ピンクの泡 ===== */
+(function(){
+  const cv=document.getElementById('bubbles'), cx=cv.getContext('2d');
+  let W,H,bubbles=[];
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){ W=cv.width=innerWidth*devicePixelRatio; H=cv.height=innerHeight*devicePixelRatio; cv.style.width=innerWidth+'px'; cv.style.height=innerHeight+'px'; }
+  function make(n){
+    bubbles=[];
+    for(let i=0;i<n;i++){
+      const r=(5+Math.random()*18)*devicePixelRatio;
+      bubbles.push({
+        x:Math.random()*W, y:Math.random()*H*1.6,
+        r, sp:(0.18+Math.random()*0.55)*devicePixelRatio,
+        sway:Math.random()*Math.PI*2, amp:(6+Math.random()*22)*devicePixelRatio,
+        a:0.25+Math.random()*0.35, ring:Math.random()>0.45
+      });
+    }
+  }
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    for(const b of bubbles){
+      b.y-=b.sp; b.sway+=0.006;
+      const x=b.x+Math.sin(b.sway)*b.amp;
+      if(b.y+b.r<0){ b.y=H+b.r; b.x=Math.random()*W }
+      const g=cx.createRadialGradient(x,b.y,0,x,b.y,b.r);
+      g.addColorStop(0,`rgba(255,200,222,${b.a*1.5})`);
+      g.addColorStop(0.45,`rgba(255,110,168,${b.a*0.85})`);
+      g.addColorStop(1,'rgba(255,92,150,0)');
+      cx.fillStyle=g; cx.beginPath(); cx.arc(x,b.y,b.r,0,Math.PI*2); cx.fill();
+      if(b.ring){
+        cx.strokeStyle=`rgba(255,185,215,${b.a*1.3})`;
+        cx.lineWidth=1.5*devicePixelRatio;
+        cx.beginPath(); cx.arc(x,b.y,b.r*0.82,0,Math.PI*2); cx.stroke();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  if(!reduce){
+    size(); make(innerWidth<640?20:32); draw();
+    addEventListener('resize',()=>{ size(); make(innerWidth<640?20:32) });
+  }
+})();
+
+/* ===== ページャ ===== */
+const cards=[...document.querySelectorAll('.card')];
+const pager=document.getElementById('pager');
+cards.forEach(()=>pager.appendChild(document.createElement('b')));
+const dots=[...pager.children];
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    const i=cards.indexOf(e.target);
+    if(e.isIntersecting&&e.intersectionRatio>.5){
+      e.target.classList.add('act');
+      dots.forEach((d,n)=>d.classList.toggle('on',n===i));
+    }
+  });
+},{threshold:[.5]});
+cards.forEach(c=>io.observe(c));
+cards[0].classList.add('act');
+
+// フォーム送信
+(function(){
+  var form=document.getElementById('contactForm'), note=document.getElementById('formNote');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var action=form.getAttribute('action');
+    if(!action){ note.textContent='現在フォームは準備中です。DMからご連絡ください。'; return; }
+    var btn=form.querySelector('.f-send'); btn.disabled=true; btn.textContent='送信中…';
+    fetch(action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(res){
+        if(res.ok){ form.reset(); note.className='f-note ok'; note.textContent='送信しました。折り返しご連絡いたします。'; }
+        else{ note.textContent='送信に失敗しました。DMからご連絡ください。'; }
+      })
+      .catch(function(){ note.textContent='送信に失敗しました。DMからご連絡ください。'; })
+      .then(function(){ btn.disabled=false; btn.innerHTML='送信する<span>&rarr;</span>'; });
+  });
+})();
+</script>
+</body>
+</html>
