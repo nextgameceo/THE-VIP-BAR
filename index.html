@@ -4,7 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>THE VIP BAR — 名古屋・栄の紹介制カラオケバー</title>
-<meta name="description" content="名古屋・栄の紹介制カラオケバー。22:00–5:00 営業、日曜定休。ご紹介・ご予約はInstagram DMより。">
+<meta name="description" content="名古屋・栄の紹介制カラオケバー THE VIP BAR。22:00〜朝5時まで、LIVE DAM完備。紹介制の落ち着いた空間で、終電を逃した夜も歌えます。">
+<link rel="canonical" href="https://the-vip-bar.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="THE VIP BAR — 名古屋・栄の紹介制カラオケバー">
+<meta property="og:description" content="22:00〜朝5時。紹介制のカラオケバー。終電を逃した夜も、朝まで。">
+<meta property="og:url" content="https://the-vip-bar.com/">
+<meta property="og:image" content="https://the-vip-bar.com/ext_door.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050305">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BarOrClub",
+  "name":"THE VIP BAR",
+  "description":"名古屋・栄の紹介制カラオケバー",
+  "url":"https://the-vip-bar.com/",
+  "image":"https://the-vip-bar.com/ext_door.jpg",
+  "address":{"@type":"PostalAddress","streetAddress":"栄3-12-14 プリンセス遠山ビル 505","addressLocality":"名古屋市中区","addressRegion":"愛知県","postalCode":"460-0008","addressCountry":"JP"},
+  "geo":{"@type":"GeoCoordinates","latitude":35.1661279,"longitude":136.9045240},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"22:00","closes":"05:00"}],
+  "servesCuisine":"Bar",
+  "priceRange":"¥¥",
+  "sameAs":["https://www.instagram.com/the_vip_bar","https://www.tiktok.com/@the_vip_bar_official"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&family=Shippori+Mincho:wght@400&family=Zen+Kaku+Gothic+Antique:wght@200;300;400&display=swap" rel="stylesheet">
@@ -230,6 +255,24 @@ body{
 .cta .arrow{ margin-left:auto; color:var(--neon-dim); font-family:"Josefin Sans",sans-serif }
 
 /* ===== ページャ ===== */
+.fab{
+  position:fixed; left:50%; bottom:clamp(14px,3.4vh,24px); z-index:60;
+  transform:translateX(-50%);
+  display:flex; align-items:center; gap:9px;
+  padding:clamp(11px,2.8vw,14px) clamp(20px,5vw,28px);
+  background:rgba(20,10,16,.86); backdrop-filter:blur(10px);
+  border:1px solid var(--neon); border-radius:100px;
+  text-decoration:none; color:var(--paper);
+  font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300;
+  font-size:clamp(12px,3.2vw,14px); letter-spacing:.14em;
+  box-shadow:0 0 26px rgba(255,92,150,.28);
+  opacity:0; pointer-events:none; transition:opacity .5s, transform .5s;
+}
+.fab.on{ opacity:1; pointer-events:auto }
+.fab:hover{ background:rgba(255,92,150,.16) }
+.fab svg{ width:17px; height:17px; fill:none; stroke:var(--neon-soft); stroke-width:1.6 }
+.fab svg .f{ fill:var(--neon-soft); stroke:none }
+
 .pager{ position:fixed; right:clamp(9px,2.4vw,16px); top:50%; transform:translateY(-50%); z-index:40; display:flex; flex-direction:column; gap:9px }
 .pager b{ display:block; width:5px; height:5px; border-radius:50%; background:rgba(255,92,150,.26); transition:background .4s, transform .4s }
 .pager b.on{ background:var(--neon); transform:scale(1.7) }
@@ -285,6 +328,11 @@ body{
 <body>
 
 <canvas id="bubbles"></canvas>
+
+<a class="fab" href="https://www.instagram.com/the_vip_bar" target="_blank" rel="noopener" aria-label="InstagramのDMで問い合わせる">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4"/><circle cx="12" cy="12" r="4.5"/><circle class="f" cx="17.5" cy="6.5" r="1.1"/></svg>
+  <span>DMで予約</span>
+</a>
 <div class="pager" id="pager"></div>
 
 <div class="deck" id="deck">
@@ -424,10 +472,10 @@ body{
     <div class="card__in">
       <p class="kicker rv">Access</p>
       <iframe class="map rv" title="THE VIP BAR の地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=35.16447,136.90616&hl=ja&z=17&output=embed"></iframe>
+        src="https://maps.google.com/maps?q=%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E6%A0%843-12-14%20%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BB%E3%82%B9%E9%81%A0%E5%B1%B1%E3%83%93%E3%83%AB&hl=ja&z=18&output=embed"></iframe>
       <dl class="info rv">
         <dt>Address</dt>
-        <dd><a href="https://www.google.com/maps/search/?api=1&query=35.16447,136.90616" target="_blank" rel="noopener">名古屋市中区栄3-12-14<br>プリンセス遠山ビル 505</a></dd>
+        <dd><a href="https://www.google.com/maps/search/?api=1&query=35.1661279,136.9045240" target="_blank" rel="noopener">名古屋市中区栄3-12-14<br>プリンセス遠山ビル 505</a></dd>
         <dt>Hours</dt>
         <dd>22:00 – 5:00（L.O. 4:00）／ 定休日 日曜</dd>
         <dt>Parking</dt>
@@ -446,7 +494,7 @@ body{
         SNSのDMにてお気軽にどうぞ。
       </p>
       <!-- 送信先: action に Formspree 等のURLを設定してください -->
-      <form class="form rv" id="contactForm" action="" method="POST">
+      <form class="form rv" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <label><span class="f-label">お名前</span>
           <input type="text" name="name" required placeholder="山田 太郎"></label>
         <label><span class="f-label">ご連絡先</span>
@@ -545,6 +593,18 @@ const io=new IntersectionObserver(es=>{
 },{threshold:[.5]});
 cards.forEach(c=>io.observe(c));
 cards[0].classList.add('act');
+
+// 常時CTAの表示制御(2枚目〜最後の1つ前で表示)
+const fab=document.querySelector('.fab');
+const deck=document.getElementById('deck');
+function updateFab(){
+  const mid = deck.scrollTop + deck.clientHeight/2;
+  let idx = 0;
+  cards.forEach((c,i)=>{ if(c.offsetTop<=mid && c.offsetTop+c.offsetHeight>mid) idx=i; });
+  fab.classList.toggle('on', idx>=1 && idx<cards.length-1);
+}
+deck.addEventListener('scroll', updateFab, {passive:true});
+updateFab();
 
 // フォーム送信
 (function(){
