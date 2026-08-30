@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>THE VIP BAR — 名古屋・栄の紹介制カラオケバー</title>
 <meta name="description" content="名古屋・栄の紹介制カラオケバー THE VIP BAR。22:00〜朝5時まで、LIVE DAM完備。紹介制の落ち着いた空間で、終電を逃した夜も歌えます。">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="canonical" href="https://the-vip-bar.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="THE VIP BAR — 名古屋・栄の紹介制カラオケバー">
@@ -293,6 +298,27 @@ body{
 }
 :focus-visible{outline:2px solid var(--neon); outline-offset:3px}
 
+/* ===== CONTACT 役割分離 ===== */
+.ct-block{ width:100% }
+.ct-lead{
+  text-align:center; margin-bottom:clamp(11px,2.8vw,15px);
+  font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300;
+  font-size:clamp(12px,3.1vw,14px); letter-spacing:.12em; color:var(--neon-soft);
+}
+.ct-div{
+  display:flex; align-items:center; gap:14px;
+  margin:clamp(18px,4.4vw,26px) 0;
+}
+.ct-div::before,.ct-div::after{
+  content:""; flex:1; height:1px;
+  background:linear-gradient(90deg, transparent, var(--hair), transparent);
+}
+.ct-div span{
+  font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300;
+  font-size:clamp(10px,2.6vw,11.5px); letter-spacing:.16em; color:var(--mute);
+  white-space:nowrap;
+}
+
 /* ===== フォーム ===== */
 .or{ text-align:center; margin:clamp(16px,4vw,24px) 0 clamp(12px,3vw,18px);
   font-family:"Josefin Sans",sans-serif; font-size:11px; letter-spacing:.5em; color:var(--neon-dim); text-transform:uppercase }
@@ -332,7 +358,7 @@ body{
 
 <a class="fab" href="https://www.instagram.com/the_vip_bar" target="_blank" rel="noopener" aria-label="InstagramのDMで問い合わせる">
   <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4"/><circle cx="12" cy="12" r="4.5"/><circle class="f" cx="17.5" cy="6.5" r="1.1"/></svg>
-  <span>DMで予約</span>
+  <span>今夜の空席を聞く</span>
 </a>
 <div class="pager" id="pager"></div>
 
@@ -489,45 +515,48 @@ body{
   <section class="card">
     <div class="card__in">
       <p class="kicker rv">Contact</p>
-      <p class="body rv">
-        ご来店のご予約、ご紹介パートナー制度、<br>
-        スタッフ募集についてのお問い合わせは<br>
-        SNSのDMにてお気軽にどうぞ。
-      </p>
-      <!-- 送信先: action に Formspree 等のURLを設定してください -->
-      <form class="form rv" id="contactForm" action="https://formspree.io/f/mkjnoowy" method="POST">
-        <label><span class="f-label">お名前</span>
-          <input type="text" name="name" required placeholder="山田 太郎"></label>
-        <label><span class="f-label">ご連絡先</span>
-          <input type="text" name="contact" required placeholder="電話番号 / Instagram ID"></label>
-        <label><span class="f-label">ご用件</span>
-          <select name="subject" required>
-            <option value="">選択してください</option>
-            <option>ご来店のご予約</option>
-            <option>ご紹介パートナー制度</option>
-            <option>スタッフ応募</option>
-            <option>貸切のご相談</option>
-            <option>その他</option>
-          </select></label>
-        <label><span class="f-label">メッセージ</span>
-          <textarea name="message" rows="2" placeholder="ご希望の日時・人数など"></textarea></label>
-        <button type="submit" class="f-send">送信する<span>&rarr;</span></button>
-        <p class="f-note" id="formNote">お急ぎの方はDMからご連絡ください。</p>
-      </form>
 
-      <p class="or rv">or</p>
+      <!-- 即時: 来店・予約はDM -->
+      <div class="ct-block rv">
+        <p class="ct-lead">今夜のご来店・空席確認</p>
+        <div class="cta">
+          <a href="https://www.instagram.com/the_vip_bar" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4"/><circle cx="12" cy="12" r="4.5"/><circle class="f" cx="17.5" cy="6.5" r="1.1"/></svg>
+            <span><span class="l">Instagram DM</span><span class="id">すぐに返信します</span></span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://www.tiktok.com/@the_vip_bar_official" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path class="f" d="M16.2 2.2h-2.9v13.1a2.7 2.7 0 1 1-2.2-2.65V9.7a5.75 5.75 0 1 0 5.1 5.7V8.9a6.6 6.6 0 0 0 3.9 1.26V7.2a3.85 3.85 0 0 1-3.9-3.9v-1.1z"/></svg>
+            <span><span class="l">TikTok</span><span class="id">@the_vip_bar_official</span></span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
 
-      <div class="cta rv">
-        <a href="https://www.instagram.com/the_vip_bar" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4"/><circle cx="12" cy="12" r="4.5"/><circle class="f" cx="17.5" cy="6.5" r="1.1"/></svg>
-          <span><span class="l">Instagram</span><span class="id">@the_vip_bar</span></span>
-          <span class="arrow">→</span>
-        </a>
-        <a href="https://www.tiktok.com/@the_vip_bar_official" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="f" d="M16.2 2.2h-2.9v13.1a2.7 2.7 0 1 1-2.2-2.65V9.7a5.75 5.75 0 1 0 5.1 5.7V8.9a6.6 6.6 0 0 0 3.9 1.26V7.2a3.85 3.85 0 0 1-3.9-3.9v-1.1z"/></svg>
-          <span><span class="l">TikTok</span><span class="id">@the_vip_bar_official</span></span>
-          <span class="arrow">→</span>
-        </a>
+      <div class="ct-div rv"><span>じっくりご相談の方は</span></div>
+
+      <!-- 相談: 貸切・パートナー・採用はフォーム -->
+      <div class="ct-block rv">
+        <p class="ct-lead">貸切・ご紹介パートナー・スタッフ応募</p>
+        <form class="form" id="contactForm" action="https://formspree.io/f/mkjnoowy" method="POST">
+          <input type="hidden" name="_subject" value="THE VIP BAR｜サイトからのお問い合わせ">
+          <label><span class="f-label">お名前</span>
+            <input type="text" name="name" required placeholder="山田 太郎"></label>
+          <label><span class="f-label">ご連絡先</span>
+            <input type="text" name="contact" required placeholder="電話番号 / Instagram ID"></label>
+          <label><span class="f-label">ご用件</span>
+            <select name="subject" required>
+              <option value="">選択してください</option>
+              <option>貸切のご相談</option>
+              <option>ご紹介パートナー制度</option>
+              <option>スタッフ応募</option>
+              <option>その他</option>
+            </select></label>
+          <label><span class="f-label">ご希望・ご質問</span>
+            <textarea name="message" rows="2" placeholder="日程・人数・ご希望の条件など"></textarea></label>
+          <button type="submit" class="f-send">送信する<span>&rarr;</span></button>
+          <p class="f-note" id="formNote">2営業日以内にご連絡いたします。</p>
+        </form>
       </div>
     </div>
   </section>
