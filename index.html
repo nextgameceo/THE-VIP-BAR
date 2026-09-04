@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>THE VIP BAR — 名古屋・栄の紹介制カラオケバー</title>
-<meta name="description" content="名古屋・栄の紹介制カラオケバー THE VIP BAR。22:00〜朝5時まで、LIVE DAM完備。完全紹介制で、V.I.P なお客様向けの空間。">
+<meta name="description" content="名古屋・栄の紹介制カラオケバー THE VIP BAR。ご紹介のある方だけの、静かな一室。22:00〜朝5時、貸切のご相談も承ります。">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png">
@@ -13,7 +13,7 @@
 <link rel="canonical" href="https://the-vip-bar.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="THE VIP BAR — 名古屋・栄の紹介制カラオケバー">
-<meta property="og:description" content="22:00〜朝5時。紹介制のカラオケバー。V.I.P の為の空間。">
+<meta property="og:description" content="ご紹介のある方だけの、静かな一室。22:00〜朝5時。">
 <meta property="og:url" content="https://the-vip-bar.com/">
 <meta property="og:image" content="https://the-vip-bar.com/ogp.jpg">
 <meta property="og:image:width" content="1200">
@@ -180,6 +180,36 @@ body{
 .list .n{ letter-spacing:.1em; color:#C9B9C1 }
 .list .d{ flex:1; border-bottom:1px dotted rgba(255,92,150,.24); transform:translateY(-4px) }
 .list .p{ font-family:"Josefin Sans",sans-serif; font-size:clamp(13px,3.3vw,15px); color:var(--neon-soft); white-space:nowrap }
+.bottles{
+  display:flex; justify-content:center; align-items:flex-end;
+  gap:clamp(6px,2vw,14px); margin:clamp(4px,1.2vw,8px) 0 0;
+}
+.bottles figure{ flex:1; max-width:86px; text-align:center }
+.bottles img{
+  width:100%; height:auto; display:block;
+  filter:drop-shadow(0 6px 22px rgba(255,92,150,.28));
+  transition:transform .4s;
+}
+.bottles figure:hover img{ transform:translateY(-6px) }
+.bottles figcaption{ margin-top:clamp(6px,1.8vw,9px) }
+.bottles .bn{
+  display:block; font-family:"Josefin Sans",sans-serif; font-weight:300;
+  font-size:clamp(9.5px,2.5vw,11px); letter-spacing:.2em; color:#C9B9C1;
+}
+.bottles .bp{
+  display:block; margin-top:4px;
+  font-family:"Josefin Sans",sans-serif; font-weight:400;
+  font-size:clamp(11px,2.9vw,13px); letter-spacing:.06em; color:var(--neon-soft);
+}
+
+.sub-head{
+  margin-top:clamp(12px,3vw,18px); padding-top:clamp(9px,2.2vw,12px);
+  border-top:1px solid var(--hair);
+  font-family:"Josefin Sans",sans-serif; font-weight:300;
+  font-size:clamp(10px,2.7vw,12px); letter-spacing:.44em;
+  text-transform:uppercase; color:var(--neon-dim); text-align:center;
+  margin-bottom:clamp(8px,2.2vw,12px);
+}
 .tax{ margin-top:clamp(16px,4vw,24px); padding-top:14px; border-top:1px solid var(--hair); font-family:"Josefin Sans",sans-serif; font-size:clamp(10px,2.6vw,12px); letter-spacing:.38em; color:var(--mute); text-align:center }
 
 /* ===== PAYMENT(再構成) ===== */
@@ -373,7 +403,7 @@ body{
     <div class="card__in">
       <img class="hero__logo rv" src="logo.png" alt="THE V.I.P BAR">
       <p class="hero__en rv">MEMBERS ONLY SONG BAR<br>IN SAKAE, NAGOYA</p>
-      <p class="hero__jp rv">名古屋・栄の紹介制カラオケバー<br><span class="hero__acc">終電を逃した夜も、朝5時まで。</span></p>
+      <p class="hero__jp rv">名古屋・栄の紹介制カラオケバー<br><span class="hero__acc">ご紹介のある方だけの、静かな一室。</span></p>
       <p class="hero__meta rv">OPEN 22:00 – 5:00　L.O. 4:00<br>CLOSED SUNDAY</p>
     </div>
     <div class="cue"><span>SCROLL</span><i></i></div>
@@ -386,11 +416,11 @@ body{
       <h2 class="head rv">紹介のある方だけ、<br>どうぞ。</h2>
       <p class="body rv">
         栄3丁目、プリンセス遠山ビルの5階。<br>
-        通っている方の紹介でだけ入れる、<br>
-        小さなカラオケバーです。<br><br>
+        ご紹介のある方だけがお通りいただける、<br>
+        カウンターとボックスの小さな店です。<br><br>
         歌っても、話しても、飲むだけでも。<br>
         カラオケは LIVE DAM の最新機種。<br>
-        小計20万円から貸切も承ります。
+        貸切のご相談も承ります。
       </p>
     </div>
   </section>
@@ -438,14 +468,30 @@ body{
         <div class="charge"><b>チャージ（2時間）</b><span>¥5,000</span></div>
         <p class="note">※ 延長は2時間ごとに ¥5,000</p>
         <ul class="list">
-          <li><span class="n">茉莉花 ／ JAPAN</span><span class="d"></span><span class="p">¥3,000</span></li>
-          <li><span class="n">吉四六 ／ 中々 ／ メーカーズ</span><span class="d"></span><span class="p">¥10,000</span></li>
-          <li><span class="n">魔王</span><span class="d"></span><span class="p">¥25,000</span></li>
-          <li><span class="n">白州 ／ 響 ／ 山崎</span><span class="d"></span><span class="p">¥30,000</span></li>
-          <li><span class="n">カクテル 各種</span><span class="d"></span><span class="p">¥1,000</span></li>
-          <li><span class="n">ショット</span><span class="d"></span><span class="p">¥2,000〜</span></li>
+          <li><span class="n">茉莉花 ／ JAPAN</span><span class="d"></span><span class="p">¥8,000</span></li>
+          <li><span class="n">吉四六</span><span class="d"></span><span class="p">¥13,000</span></li>
+          <li><span class="n">魔王</span><span class="d"></span><span class="p">¥30,000</span></li>
+          <li><span class="n">白州 ／ 響 ／ 山崎</span><span class="d"></span><span class="p">¥35,000</span></li>
+          <li><span class="n">ドリンク S ／ M ／ L</span><span class="d"></span><span class="p">¥2,000〜</span></li>
+          <li><span class="n">ショット</span><span class="d"></span><span class="p">¥4,000</span></li>
         </ul>
-        <p class="tax">Service 10% / Tax 10%</p>
+        <p class="sub-head">Original champagne</p>
+        <div class="bottles">
+          <figure>
+            <img src="bottle_pink.png" alt="V.I.P PINK" loading="lazy">
+            <figcaption><span class="bn">V.I.P PINK</span><span class="bp">¥25,000</span></figcaption>
+          </figure>
+          <figure>
+            <img src="bottle_gold.png" alt="V.I.P GOLD" loading="lazy">
+            <figcaption><span class="bn">V.I.P GOLD</span><span class="bp">¥50,000</span></figcaption>
+          </figure>
+          <figure>
+            <img src="bottle_black.png" alt="V.I.P BLACK" loading="lazy">
+            <figcaption><span class="bn">V.I.P BLACK</span><span class="bp">¥100,000</span></figcaption>
+          </figure>
+        </div>
+        <p class="note" style="margin-top:10px">シャンパンは ¥30,000 〜 ¥500,000 までご用意しております。</p>
+        <p class="tax">Service 20% / Tax 10%</p>
       </div>
     </div>
   </section>
