@@ -416,11 +416,18 @@ body{
       <h2 class="head rv">紹介のある方だけ、<br>どうぞ。</h2>
       <p class="body rv">
         栄3丁目、プリンセス遠山ビルの5階。<br>
-        ご紹介のある方だけがお通りいただける、<br>
-        カウンターとボックスの小さな店です。<br><br>
+        ご紹介のある方だけに、扉を開いています。<br>
+        誰でも来られる場所ではないからこそ、<br>
+        守られる静けさがあります。<br><br>
         歌っても、話しても、飲むだけでも。<br>
         カラオケは LIVE DAM の最新機種。<br>
         貸切のご相談も承ります。
+      </p>
+      <div class="rule rv"></div>
+      <p class="body rv">
+        同業の方のアフターにも。<br>
+        お仕事終わりの静かな一杯を、<br>
+        朝5時まで。
       </p>
     </div>
   </section>
@@ -433,7 +440,7 @@ body{
         <figure><img src="ext_building.jpg" alt="プリンセス遠山ビル 外観"><figcaption>Princess Toyama</figcaption></figure>
         <figure><img src="ext_signboard.jpg" alt="5階 案内看板"><figcaption>5F</figcaption></figure>
         <figure><img src="ext_door.jpg" alt="店舗入口"><figcaption>Entrance</figcaption></figure>
-        <figure><img src="room1.jpg" alt="店内"><figcaption>Counter &amp; Sofa</figcaption></figure>
+        <figure><img src="room1.jpg" alt="店内"><figcaption>Counter &amp; Tables</figcaption></figure>
       </div>
       <p class="slide-hint rv">← swipe →</p>
     </div>
@@ -472,7 +479,6 @@ body{
           <li><span class="n">吉四六</span><span class="d"></span><span class="p">¥13,000</span></li>
           <li><span class="n">魔王</span><span class="d"></span><span class="p">¥30,000</span></li>
           <li><span class="n">白州 ／ 響 ／ 山崎</span><span class="d"></span><span class="p">¥35,000</span></li>
-          <li><span class="n">ドリンク S ／ M ／ L</span><span class="d"></span><span class="p">¥2,000〜</span></li>
           <li><span class="n">アネホ 1800</span><span class="d"></span><span class="p">¥4,000</span></li>
           <li><span class="n">テキーラ観覧車</span><span class="d"></span><span class="p">¥50,000</span></li>
         </ul>
@@ -567,9 +573,12 @@ body{
     <div class="card__in">
       <p class="kicker rv">Contact</p>
 
-      <!-- 即時: 来店・予約はDM -->
       <div class="ct-block rv">
-        <p class="ct-lead">今夜のご来店・空席確認</p>
+        <p class="ct-lead">ご来店・貸切・ご紹介・お仕事のご相談</p>
+        <p class="body" style="text-align:center;margin-bottom:clamp(20px,5vw,30px)">
+          いずれも Instagram または TikTok の<br>
+          DM よりお問い合わせください。
+        </p>
         <div class="cta">
           <a href="https://www.instagram.com/the_vip_bar" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4"/><circle cx="12" cy="12" r="4.5"/><circle class="f" cx="17.5" cy="6.5" r="1.1"/></svg>
@@ -582,32 +591,6 @@ body{
             <span class="arrow">→</span>
           </a>
         </div>
-      </div>
-
-      <div class="ct-div rv"><span>じっくりご相談の方は</span></div>
-
-      <!-- 相談: 貸切・パートナー・採用はフォーム -->
-      <div class="ct-block rv">
-        <p class="ct-lead">貸切・ご紹介パートナー・スタッフ応募</p>
-        <form class="form" id="contactForm" action="https://formspree.io/f/mkjnoowy" method="POST">
-          <input type="hidden" name="_subject" value="THE VIP BAR｜サイトからのお問い合わせ">
-          <label><span class="f-label">お名前</span>
-            <input type="text" name="name" required placeholder="山田 太郎"></label>
-          <label><span class="f-label">ご連絡先</span>
-            <input type="text" name="contact" required placeholder="電話番号 / Instagram ID"></label>
-          <label><span class="f-label">ご用件</span>
-            <select name="subject" required>
-              <option value="">選択してください</option>
-              <option>貸切のご相談</option>
-              <option>ご紹介パートナー制度</option>
-              <option>スタッフ応募</option>
-              <option>その他</option>
-            </select></label>
-          <label><span class="f-label">ご希望・ご質問</span>
-            <textarea name="message" rows="2" placeholder="日程・人数・ご希望の条件など"></textarea></label>
-          <button type="submit" class="f-send">送信する<span>&rarr;</span></button>
-          <p class="f-note" id="formNote">2営業日以内にご連絡いたします。</p>
-        </form>
       </div>
     </div>
   </section>
@@ -687,24 +670,6 @@ function updateFab(){
 deck.addEventListener('scroll', updateFab, {passive:true});
 updateFab();
 
-// フォーム送信
-(function(){
-  var form=document.getElementById('contactForm'), note=document.getElementById('formNote');
-  if(!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var action=form.getAttribute('action');
-    if(!action){ note.textContent='現在フォームは準備中です。DMからご連絡ください。'; return; }
-    var btn=form.querySelector('.f-send'); btn.disabled=true; btn.textContent='送信中…';
-    fetch(action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(res){
-        if(res.ok){ form.reset(); note.className='f-note ok'; note.textContent='送信しました。折り返しご連絡いたします。'; }
-        else{ note.textContent='送信に失敗しました。DMからご連絡ください。'; }
-      })
-      .catch(function(){ note.textContent='送信に失敗しました。DMからご連絡ください。'; })
-      .then(function(){ btn.disabled=false; btn.innerHTML='送信する<span>&rarr;</span>'; });
-  });
-})();
 </script>
 </body>
 </html>

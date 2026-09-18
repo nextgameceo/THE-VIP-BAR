@@ -1,4 +1,10 @@
-THE VIP BAR — 公式サイト一式
+THE VIP BAR — 公式サイト一式（更新版）
+
+【今回の変更点】
+1. 店内写真を新しいものに差し替え（room1.jpg）
+2. メニューの「ドリンク S／M／L」を削除
+3. ABOUTの文章を、紹介制ならではの上質さ・アフター利用の案内に変更
+4. お問い合わせフォームを撤去し、Instagram / TikTok の DM のみに一本化
 
 【アップロード方法】
 1. GitHub のリポジトリ（THE-VIP-BAR）を開く
@@ -8,17 +14,4 @@ THE VIP BAR — 公式サイト一式
 4. 画面下の「Commit changes」を押す
 
 これで完了です。数分後に the-vip-bar.com に反映されます。
-
-【含まれるファイル】
-index.html          … サイト本体
-logo.png            … 店舗ロゴ
-ext_*.jpg           … 外観・看板・入口の写真
-room1.jpg           … 店内写真
-reina/rua/mizuki.jpg… スタッフ写真
-bottle_*.png        … オリジナルシャンパン3種
-visa.png ほか23点    … 決済ブランドのロゴ
-ogp.jpg             … SNSシェア用の画像
-favicon.ico / icon-*.png / site.webmanifest … ファビコン
-
-【お問い合わせフォーム】
-送信先は Formspree（mkjnoowy）に設定済みです。
+同名ファイルは自動的に上書きされます。
