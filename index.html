@@ -183,6 +183,23 @@ body{
   overflow:clip;
 }
 
+/* HERO以外: 上部固定ナビ(quick-nav)と重ならないよう上部に余白を確保 */
+.deck > .card:not(:first-child){
+  padding-top:calc(clamp(26px,7vw,64px) + 52px);
+  justify-content:flex-start;
+  height:100svh;
+  max-height:100svh;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.deck > .card:not(:first-child)::-webkit-scrollbar{ display:none }
+
+/* HERO・CONTACT以外: 下部の常時CTA(fab)と重ならないよう余白を確保 */
+.deck > .card:not(:first-child):not(:last-child){
+  padding-bottom:calc(clamp(26px,7vw,64px) + 74px);
+}
+
 .card::after{
   content:"";
 
@@ -318,9 +335,9 @@ body{
 
   font-size:clamp(22px,6vw,36px);
   letter-spacing:.2em;
-  line-height:1.65;
+  line-height:1.5;
 
-  margin-bottom:clamp(16px,4vw,26px);
+  margin-bottom:clamp(10px,2.6vw,16px);
 }
 
 .body{
@@ -328,7 +345,7 @@ body{
   font-weight:300;
 
   font-size:clamp(13px,3.3vw,15px);
-  line-height:2.35;
+  line-height:1.72;
   letter-spacing:.14em;
 
   color:#C9B9C1;
@@ -339,7 +356,7 @@ body{
   height:1px;
 
   margin:
-    clamp(18px,4vw,26px)
+    clamp(10px,2.4vw,16px)
     0;
 
   background:
@@ -355,13 +372,13 @@ body{
 .value-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:9px;
-  margin-top:clamp(22px,5vw,30px);
+  gap:8px;
+  margin-top:clamp(12px,2.8vw,18px);
 }
 
 .value-card{
-  min-height:118px;
-  padding:15px 10px;
+  min-height:78px;
+  padding:9px 8px;
   border:1px solid var(--hair);
   background:linear-gradient(145deg,rgba(255,92,150,.1),rgba(255,92,150,.02));
   text-align:center;
@@ -830,6 +847,38 @@ body{
   color:#D9B86A;
 }
 
+.staff-divider{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:clamp(22px,5.5vw,34px) 0 clamp(18px,4.5vw,26px);
+}
+
+.staff-divider::before,
+.staff-divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--hair), transparent);
+}
+
+.staff-divider span{
+  font-family:"Josefin Sans",sans-serif;
+  font-weight:300;
+  font-size:clamp(9px,2.4vw,11px);
+  letter-spacing:.4em;
+  color:#D9B86A;
+  white-space:nowrap;
+}
+
+.staff--master{
+  justify-content:center;
+}
+
+.staff--master figure{
+  max-width:130px;
+}
+
 .menu-section-label{
   margin-top:clamp(16px,4vw,22px);
   margin-bottom:clamp(7px,2vw,10px);
@@ -942,6 +991,16 @@ body{
 /* =========================================================
    CHAMPAGNE
 ========================================================= */
+
+.champ-note{
+  text-align:center;
+  margin-top:8px;
+  font-family:"Zen Kaku Gothic Antique",sans-serif;
+  font-weight:300;
+  font-size:clamp(10.5px,2.7vw,12px);
+  letter-spacing:.1em;
+  color:#B892A0;
+}
 
 .bottles{
   display:flex;
@@ -1902,30 +1961,19 @@ body{
     <p class="body rv">
 
       当店は、ご紹介・ご予約のあるお客様だけを
-      お迎えしています。<br>
-      <br>
+      お迎えしています。誰もが訪れる場所ではない
+      からこそ、周囲を気にせず過ごせる
+      プライベートな空間があります。<br><br>
 
-      誰もが訪れる場所ではないからこそ、
-      周囲を気にせず過ごせる
-      プライベートな空間があります。<br>
-      <br>
+      お客様のプライバシーに配慮し、大切な方との
+      ひとときや、打ち合わせ・接待・アフターなど、
+      それぞれの時間をゆっくりとお楽しみ
+      いただけます。<br><br>
 
-      お客様のプライバシーに配慮し、
-      大切な方とのひとときや、
-      打ち合わせ・接待・アフターなど、
-      それぞれの時間をゆっくりと
-      お楽しみいただけます。<br>
-      <br>
-
-      経営者の方をはじめ、
-      ビジネスの交流や人とのつながりを
-      深める場としてのご利用も可能です。<br>
-      <br>
-
-      ご予算やご利用目的に応じた
-      貸切営業など、
-      ご利用方法についても
-      柔軟にご相談を承ります。
+      経営者の方をはじめ、ビジネスの交流や
+      人とのつながりを深める場としてのご利用も
+      可能です。ご予算やご利用目的に応じた
+      貸切営業など、柔軟にご相談を承ります。
 
     </p>
 
@@ -2110,6 +2158,12 @@ body{
         </figcaption>
       </figure>
 
+    </div>
+
+    <div class="staff-divider rv"><span>MASTER</span></div>
+
+    <div class="staff staff--master rv">
+
       <figure class="master">
         <div class="ring">
           <img src="woo.jpg" alt="WOO" loading="lazy" decoding="async">
@@ -2174,6 +2228,7 @@ body{
 
       <ul class="list menu-section-list">
         <li><span class="n">テキーラ観覧車</span><span class="d"></span><span class="p">¥80,000</span></li>
+        <li><span class="n">テキーラタワー</span><span class="d"></span><span class="p">¥ASK</span></li>
       </ul>
 
     </div>
@@ -2205,6 +2260,7 @@ body{
         V.I.P Collection
       </p>
 
+      <p class="champ-note rv">試飲を重ね、拘り抜いた自家製シャンパン。</p>
 
       <div class="bottles">
 
@@ -3269,7 +3325,7 @@ const observer =
 
           if(
             !entry.isIntersecting ||
-            entry.intersectionRatio <= .5
+            entry.intersectionRatio <= .2
           ){
             return;
           }
@@ -3298,7 +3354,7 @@ const observer =
 
     },
     {
-      threshold:[.5]
+      threshold:[.2]
     }
   );
 
