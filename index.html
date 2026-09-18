@@ -92,10 +92,11 @@ body{
 
 /* ===== タイポ ===== */
 .kicker{
-  font-family:"Josefin Sans",sans-serif; font-size:clamp(13px,3.6vw,17px);
-  letter-spacing:.56em; text-transform:uppercase; color:var(--neon-soft);
-  margin-bottom:clamp(18px,4.4vw,28px); text-align:center;
-  text-indent:.56em;
+  font-family:"Josefin Sans",sans-serif; font-size:clamp(17px,4.4vw,22px);
+  letter-spacing:.5em; text-transform:uppercase; color:var(--neon-soft);
+  margin-bottom:clamp(14px,3.4vw,22px); text-align:center;
+  text-indent:.5em; font-weight:400;
+  text-shadow:0 0 6px rgba(255,92,150,.85), 0 0 16px rgba(255,92,150,.55), 0 0 34px rgba(255,92,150,.3);
 }
 .kicker::after{
   content:""; display:block; width:34px; height:1px; margin:clamp(10px,2.6vw,14px) auto 0;
@@ -154,6 +155,20 @@ body{
   font-family:"Josefin Sans",sans-serif; font-size:10px;
   letter-spacing:.42em; color:var(--neon-dim); text-transform:uppercase;
 }
+.slider-wrap{ position:relative }
+.slide-nav{
+  position:absolute; top:44%; transform:translateY(-50%); z-index:5;
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--hair);
+  background:rgba(20,10,15,.72); color:var(--neon-soft);
+  font-size:26px; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .3s, background .3s, opacity .3s;
+}
+.slide-nav:hover,.slide-nav:focus-visible{ border-color:var(--neon); background:rgba(255,92,150,.14) }
+.slide-nav.prev{ left:-6px }
+.slide-nav.next{ right:-6px }
+.slide-nav[disabled]{ opacity:.25; cursor:default }
+@media (hover:none){ .slide-nav{ display:none } }
 
 /* ===== STAFF(再構成) ===== */
 .staff{ display:flex; justify-content:center; gap:clamp(12px,4vw,28px) }
@@ -173,7 +188,7 @@ body{
 /* ===== MENU(再構成) ===== */
 .charge{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:clamp(12px,3.2vw,18px) 0; border-top:1px solid var(--hair); border-bottom:1px solid var(--hair) }
 .charge b{ font-family:"Zen Kaku Gothic Antique",sans-serif; font-weight:300; font-size:clamp(15px,4vw,19px); letter-spacing:.14em }
-.charge span{ font-family:"Josefin Sans",sans-serif; font-size:clamp(19px,5vw,26px); color:var(--neon) }
+.charge span{ font-family:"Josefin Sans",sans-serif; font-size:clamp(17px,4.4vw,22px); color:var(--neon) }
 .note{ font-size:clamp(10px,2.6vw,12px); color:var(--mute); letter-spacing:.1em; margin-top:10px }
 .list{ list-style:none; margin-top:clamp(16px,4vw,24px) }
 .list li{ display:flex; align-items:baseline; gap:10px; padding:6px 0; font-size:clamp(12px,3.1vw,14px) }
@@ -211,6 +226,26 @@ body{
   margin-bottom:clamp(8px,2.2vw,12px);
 }
 .tax{ margin-top:clamp(16px,4vw,24px); padding-top:14px; border-top:1px solid var(--hair); font-family:"Josefin Sans",sans-serif; font-size:clamp(10px,2.6vw,12px); letter-spacing:.38em; color:var(--mute); text-align:center }
+
+.champ-list{ columns:2; column-gap:clamp(18px,4.6vw,36px); margin-top:clamp(10px,2.6vw,16px) }
+.champ-list li{ break-inside:avoid }
+.list--sm li{ padding:5px 0; font-size:clamp(11px,2.7vw,13px) }
+.list--sm .n{ letter-spacing:.04em }
+
+/* ===== PC(デスクトップ)向けの調整 ===== */
+@media (min-width:820px){
+  .champ-in{ padding:0 clamp(20px,4vw,60px) }
+  .bottles{ gap:clamp(20px,3vw,42px); margin-bottom:0 }
+  .bottles figure{ max-width:90px }
+  .bottles img{ max-height:250px; width:auto; margin:0 auto }
+  .sub-head{ margin-top:clamp(16px,2.6vw,26px) }
+  .champ-list{ column-gap:clamp(40px,6vw,72px) }
+  .list--sm li{ padding:7px 0 }
+}
+@media (min-width:1200px){
+  .card__in{ max-width:740px }
+  .champ-list{ column-gap:96px }
+}
 
 /* ===== PAYMENT(再構成) ===== */
 .pay-group + .pay-group{ margin-top:clamp(18px,4.4vw,28px) }
@@ -352,6 +387,8 @@ body{
   font-size:clamp(10px,2.6vw,11.5px); letter-spacing:.16em; color:var(--mute);
   white-space:nowrap;
 }
+.cta--sub{ opacity:.78; padding-top:clamp(11px,2.8vw,14px); padding-bottom:clamp(11px,2.8vw,14px) }
+.cta--sub .id{ color:var(--mute) }
 
 /* ===== フォーム ===== */
 .or{ text-align:center; margin:clamp(16px,4vw,24px) 0 clamp(12px,3vw,18px);
@@ -403,7 +440,7 @@ body{
     <div class="card__in">
       <img class="hero__logo rv" src="logo.png" alt="THE V.I.P BAR">
       <p class="hero__en rv">MEMBERS ONLY SONG BAR<br>IN SAKAE, NAGOYA</p>
-      <p class="hero__jp rv">名古屋・栄の紹介制カラオケバー<br><span class="hero__acc">ご紹介のある方だけの、静かな一室。</span></p>
+      <p class="hero__jp rv">名古屋・栄の紹介制カラオケバー</p>
       <p class="hero__meta rv">OPEN 22:00 – 5:00　L.O. 4:00<br>CLOSED SUNDAY</p>
     </div>
     <div class="cue"><span>SCROLL</span><i></i></div>
@@ -413,7 +450,7 @@ body{
   <section class="card">
     <div class="card__in">
       <p class="kicker rv">About</p>
-      <h2 class="head rv">紹介のある方だけ、<br>どうぞ。</h2>
+      <h2 class="head rv">紹介制、という選択。</h2>
       <p class="body rv">
         栄3丁目、プリンセス遠山ビルの5階。<br>
         ご紹介のある方だけに、扉を開いています。<br>
@@ -436,11 +473,15 @@ body{
   <section class="card">
     <div class="card__in">
       <p class="kicker rv">Interior</p>
-      <div class="slider rv" id="slider">
-        <figure><img src="ext_building.jpg" alt="プリンセス遠山ビル 外観"><figcaption>Princess Toyama</figcaption></figure>
-        <figure><img src="ext_signboard.jpg" alt="5階 案内看板"><figcaption>5F</figcaption></figure>
-        <figure><img src="ext_door.jpg" alt="店舗入口"><figcaption>Entrance</figcaption></figure>
-        <figure><img src="room1.jpg" alt="店内"><figcaption>Counter &amp; Tables</figcaption></figure>
+      <div class="slider-wrap rv">
+        <button type="button" class="slide-nav prev" aria-label="前の写真">‹</button>
+        <div class="slider" id="slider">
+          <figure><img src="ext_building.jpg" alt="プリンセス遠山ビル 外観"><figcaption>Princess Toyama</figcaption></figure>
+          <figure><img src="ext_signboard.jpg" alt="5階 案内看板"><figcaption>5F</figcaption></figure>
+          <figure><img src="ext_door.jpg" alt="店舗入口"><figcaption>Entrance</figcaption></figure>
+          <figure><img src="room1.jpg" alt="店内"><figcaption>Counter &amp; Tables</figcaption></figure>
+        </div>
+        <button type="button" class="slide-nav next" aria-label="次の写真">›</button>
       </div>
       <p class="slide-hint rv">← swipe →</p>
     </div>
@@ -480,9 +521,18 @@ body{
           <li><span class="n">魔王</span><span class="d"></span><span class="p">¥30,000</span></li>
           <li><span class="n">白州 ／ 響 ／ 山崎</span><span class="d"></span><span class="p">¥35,000</span></li>
           <li><span class="n">アネホ 1800</span><span class="d"></span><span class="p">¥4,000</span></li>
-          <li><span class="n">テキーラ観覧車</span><span class="d"></span><span class="p">¥50,000</span></li>
+          <li><span class="n">テキーラ観覧車</span><span class="d"></span><span class="p">¥80,000</span></li>
         </ul>
-        <p class="sub-head">Original champagne</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04b CHAMPAGNE -->
+  <section class="card">
+    <div class="card__in">
+      <p class="kicker rv">Champagne</p>
+      <div class="rv champ-in">
+        <p class="sub-head" style="margin-top:0">Original champagne</p>
         <div class="bottles">
           <figure>
             <img src="bottle_pink.png" alt="V.I.P PINK" loading="lazy">
@@ -497,7 +547,20 @@ body{
             <figcaption><span class="bn">V.I.P BLACK</span><span class="bp">¥100,000</span></figcaption>
           </figure>
         </div>
-        <p class="note" style="margin-top:10px">シャンパンは ¥30,000 〜 ¥500,000 までご用意しております。</p>
+        <p class="sub-head">Champagne</p>
+        <ul class="list list--sm champ-list">
+          <li><span class="n">PJ</span><span class="d"></span><span class="p">¥30,000</span></li>
+          <li><span class="n">ヴーヴイエロー</span><span class="d"></span><span class="p">¥30,000</span></li>
+          <li><span class="n">ウルトラブリュット</span><span class="d"></span><span class="p">¥60,000</span></li>
+          <li><span class="n">ソウメイ</span><span class="d"></span><span class="p">¥80,000</span></li>
+          <li><span class="n">ベルエポック</span><span class="d"></span><span class="p">¥100,000</span></li>
+          <li><span class="n">ドンペリ ルミナス</span><span class="d"></span><span class="p">¥120,000</span></li>
+          <li><span class="n">クリュグ</span><span class="d"></span><span class="p">¥150,000</span></li>
+          <li><span class="n">ソウメイ ブルー</span><span class="d"></span><span class="p">¥180,000</span></li>
+          <li><span class="n">アルマンド ゴールド</span><span class="d"></span><span class="p">¥200,000</span></li>
+          <li><span class="n">アルマンド グリーン</span><span class="d"></span><span class="p">¥300,000</span></li>
+          <li><span class="n">アルマンド レッド</span><span class="d"></span><span class="p">¥500,000</span></li>
+        </ul>
         <p class="tax">Service 20% / Tax 10%</p>
       </div>
     </div>
@@ -576,8 +639,8 @@ body{
       <div class="ct-block rv">
         <p class="ct-lead">ご来店・貸切・ご紹介・お仕事のご相談</p>
         <p class="body" style="text-align:center;margin-bottom:clamp(20px,5vw,30px)">
-          いずれも Instagram または TikTok の<br>
-          DM よりお問い合わせください。
+          お問い合わせは Instagram DM にて<br>
+          承っております。
         </p>
         <div class="cta">
           <a href="https://www.instagram.com/the_vip_bar" target="_blank" rel="noopener">
@@ -585,10 +648,12 @@ body{
             <span><span class="l">Instagram DM</span><span class="id">すぐに返信します</span></span>
             <span class="arrow">→</span>
           </a>
-          <a href="https://www.tiktok.com/@the_vip_bar_official" target="_blank" rel="noopener">
+        </div>
+        <div class="ct-div rv"><span>店の雰囲気をもっと見る</span></div>
+        <div class="cta">
+          <a href="https://www.tiktok.com/@the_vip_bar_official" target="_blank" rel="noopener" class="cta--sub">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path class="f" d="M16.2 2.2h-2.9v13.1a2.7 2.7 0 1 1-2.2-2.65V9.7a5.75 5.75 0 1 0 5.1 5.7V8.9a6.6 6.6 0 0 0 3.9 1.26V7.2a3.85 3.85 0 0 1-3.9-3.9v-1.1z"/></svg>
-            <span><span class="l">TikTok</span><span class="id">@the_vip_bar_official</span></span>
-            <span class="arrow">→</span>
+            <span><span class="l">TikTok</span><span class="id">最新の店内の様子はこちら</span></span>
           </a>
         </div>
       </div>
@@ -598,6 +663,36 @@ body{
 </div>
 
 <script>
+/* ===== INTERIORスライダー(PC用矢印) ===== */
+(function(){
+  const wrap = document.querySelector('.slider-wrap');
+  if(!wrap) return;
+  const slider = wrap.querySelector('#slider');
+  const prev = wrap.querySelector('.slide-nav.prev');
+  const next = wrap.querySelector('.slide-nav.next');
+  function step(dir){
+    const card = slider.querySelector('figure');
+    const w = card ? card.offsetWidth + 16 : 300;
+    slider.scrollBy({left: dir*w, behavior:'smooth'});
+  }
+  prev.addEventListener('click', ()=>step(-1));
+  next.addEventListener('click', ()=>step(1));
+  function updateNav(){
+    const max = slider.scrollWidth - slider.clientWidth - 4;
+    prev.disabled = slider.scrollLeft <= 4;
+    next.disabled = slider.scrollLeft >= max;
+  }
+  slider.addEventListener('scroll', updateNav, {passive:true});
+  updateNav();
+  // 横スクロール対応(マウスホイールの縦スクロールを横に変換)
+  slider.addEventListener('wheel', function(e){
+    if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+      e.preventDefault();
+      slider.scrollBy({left: e.deltaY, behavior:'auto'});
+    }
+  }, {passive:false});
+})();
+
 /* ===== ピンクの泡 ===== */
 (function(){
   const cv=document.getElementById('bubbles'), cx=cv.getContext('2d');
