@@ -810,6 +810,26 @@ body{
   color:var(--neon-dim);
 }
 
+/* MASTER: WOOだけ、スタッフとの差が自然に伝わるシャンパンゴールド */
+.staff figure.master .ring{
+  background:
+    conic-gradient(
+      from 210deg,
+      #E8C982,
+      #8E6D35,
+      #FFF0B8,
+      #C8A75B,
+      #E8C982
+    );
+  box-shadow:
+    0 0 26px rgba(232,201,130,.30),
+    0 0 54px rgba(232,201,130,.10);
+}
+
+.staff figure.master .staff-role{
+  color:#D9B86A;
+}
+
 .menu-section-label{
   margin-top:clamp(16px,4vw,22px);
   margin-bottom:clamp(7px,2vw,10px);
@@ -2090,7 +2110,7 @@ body{
         </figcaption>
       </figure>
 
-      <figure>
+      <figure class="master">
         <div class="ring">
           <img src="woo.jpg" alt="WOO" loading="lazy" decoding="async">
         </div>
