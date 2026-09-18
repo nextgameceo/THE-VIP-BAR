@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>THE VIP BAR — 名古屋・栄の紹介制カラオケバー</title>
+<title>THE VIP BAR｜名古屋・栄の完全紹介制プライベートカラオケバー</title>
 
 <meta
   name="description"
@@ -743,17 +743,14 @@ body{
 
 .staff{
   display:flex;
-
   justify-content:center;
-
-  gap:clamp(12px,4vw,28px);
+  gap:clamp(8px,3vw,28px);
 }
 
 .staff figure{
   text-align:center;
-
-  flex:1;
-
+  flex:1 1 0;
+  min-width:0;
   max-width:150px;
 }
 
@@ -794,15 +791,42 @@ body{
 }
 
 .staff figcaption{
-  margin-top:
-    clamp(10px,2.6vw,16px);
-
+  margin-top:clamp(9px,2.4vw,16px);
   font-family:"Josefin Sans",sans-serif;
-
-  font-size:clamp(12px,3.2vw,15px);
-  letter-spacing:.28em;
-
   color:var(--neon-soft);
+}
+
+.staff .staff-name{
+  display:block;
+  font-size:clamp(11px,3vw,15px);
+  letter-spacing:.24em;
+}
+
+.staff .staff-role{
+  display:block;
+  margin-top:4px;
+  font-size:clamp(8px,2.1vw,10px);
+  letter-spacing:.34em;
+  color:var(--neon-dim);
+}
+
+.menu-section-label{
+  margin-top:clamp(16px,4vw,22px);
+  margin-bottom:clamp(7px,2vw,10px);
+  padding-bottom:7px;
+  border-bottom:1px solid var(--hair);
+  font-family:"Josefin Sans",sans-serif;
+  font-size:clamp(9px,2.5vw,11px);
+  letter-spacing:.42em;
+  color:var(--neon-dim);
+}
+
+.menu-section-label:first-child{
+  margin-top:0;
+}
+
+.menu-section-list{
+  margin-top:0;
 }
 
 /* =========================================================
@@ -1229,6 +1253,17 @@ body{
   letter-spacing:.14em;
 
   color:var(--neon-soft);
+}
+
+.access-note{
+  margin-top:clamp(14px,3.5vw,22px);
+  padding-top:12px;
+  border-top:1px solid var(--hair);
+  font-size:clamp(10px,2.6vw,12px);
+  line-height:1.9;
+  letter-spacing:.08em;
+  color:var(--mute);
+  text-align:center;
 }
 
 /* =========================================================
@@ -2026,62 +2061,43 @@ body{
     <div class="staff rv">
 
       <figure>
-
         <div class="ring">
-
-          <img
-            src="reina.jpg"
-            alt="REINA"
-            loading="lazy"
-            decoding="async"
-          >
-
+          <img src="reina.jpg" alt="REINA" loading="lazy" decoding="async">
         </div>
-
         <figcaption>
-          REINA
+          <span class="staff-name">REINA</span>
+          <span class="staff-role">STAFF</span>
         </figcaption>
-
       </figure>
 
-
       <figure>
-
         <div class="ring">
-
-          <img
-            src="mizuki.jpg"
-            alt="MIZUKI"
-            loading="lazy"
-            decoding="async"
-          >
-
+          <img src="mizuki.jpg" alt="MIZUKI" loading="lazy" decoding="async">
         </div>
-
         <figcaption>
-          MIZUKI
+          <span class="staff-name">MIZUKI</span>
+          <span class="staff-role">STAFF</span>
         </figcaption>
-
       </figure>
 
+      <figure>
+        <div class="ring">
+          <img src="rua.jpg" alt="RUA" loading="lazy" decoding="async">
+        </div>
+        <figcaption>
+          <span class="staff-name">RUA</span>
+          <span class="staff-role">STAFF</span>
+        </figcaption>
+      </figure>
 
       <figure>
-
         <div class="ring">
-
-          <img
-            src="rua.jpg"
-            alt="RUA"
-            loading="lazy"
-            decoding="async"
-          >
-
+          <img src="woo.jpg" alt="WOO" loading="lazy" decoding="async">
         </div>
-
         <figcaption>
-          RUA
+          <span class="staff-name">WOO</span>
+          <span class="staff-role">MASTER</span>
         </figcaption>
-
       </figure>
 
     </div>
@@ -2124,85 +2140,20 @@ body{
       </p>
 
 
-      <ul class="list">
+      <p class="menu-section-label">BOTTLE</p>
 
-        <li>
-          <span class="n">
-            茉莉花 ／ JAPAN
-          </span>
+      <ul class="list menu-section-list">
+        <li><span class="n">茉莉花 ／ JAPAN</span><span class="d"></span><span class="p">¥8,000</span></li>
+        <li><span class="n">吉四六</span><span class="d"></span><span class="p">¥13,000</span></li>
+        <li><span class="n">魔王</span><span class="d"></span><span class="p">¥30,000</span></li>
+        <li><span class="n">白州 ／ 響 ／ 山崎</span><span class="d"></span><span class="p">¥35,000</span></li>
+        <li><span class="n">アネホ 1800</span><span class="d"></span><span class="p">¥4,000</span></li>
+      </ul>
 
-          <span class="d"></span>
+      <p class="menu-section-label">SPECIAL</p>
 
-          <span class="p">
-            ¥8,000
-          </span>
-        </li>
-
-
-        <li>
-          <span class="n">
-            吉四六
-          </span>
-
-          <span class="d"></span>
-
-          <span class="p">
-            ¥13,000
-          </span>
-        </li>
-
-
-        <li>
-          <span class="n">
-            魔王
-          </span>
-
-          <span class="d"></span>
-
-          <span class="p">
-            ¥30,000
-          </span>
-        </li>
-
-
-        <li>
-          <span class="n">
-            白州 ／ 響 ／ 山崎
-          </span>
-
-          <span class="d"></span>
-
-          <span class="p">
-            ¥35,000
-          </span>
-        </li>
-
-
-        <li>
-          <span class="n">
-            アネホ 1800
-          </span>
-
-          <span class="d"></span>
-
-          <span class="p">
-            ¥4,000
-          </span>
-        </li>
-
-
-        <li>
-          <span class="n">
-            テキーラ観覧車
-          </span>
-
-          <span class="d"></span>
-
-          <span class="p">
-            ¥80,000
-          </span>
-        </li>
-
+      <ul class="list menu-section-list">
+        <li><span class="n">テキーラ観覧車</span><span class="d"></span><span class="p">¥80,000</span></li>
       </ul>
 
     </div>
@@ -2711,6 +2662,10 @@ body{
 
     </dl>
 
+    <p class="access-note">
+      初めての方は「5F / ROOM 505」の案内写真をご確認ください。
+    </p>
+
   </div>
 
 </section>
@@ -2745,7 +2700,7 @@ body{
       </p>
 
       <p class="contact-note">
-        DMには「ご希望日時・人数・ご利用目的（ご紹介／貸切など）」を添えていただくと、スムーズにご案内できます。
+        DMには「ご希望日時・人数・ご紹介者様のお名前・ご利用目的（ご紹介／貸切など）」を添えていただくと、スムーズにご案内できます。
       </p>
 
 
