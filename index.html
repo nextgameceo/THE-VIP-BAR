@@ -1702,50 +1702,138 @@ body{
 }
 
 /* =========================================================
-   QUICK NAVIGATION
+   QUICK NAVIGATION (hamburger + dropdown panel)
 ========================================================= */
 
-.quick-nav{
+.menu-toggle{
   position:fixed;
   top:max(12px,env(safe-area-inset-top));
-  left:50%;
-  z-index:50;
+  right:clamp(12px,3.5vw,22px);
+  z-index:55;
+
+  width:44px;
+  height:44px;
+
   display:flex;
-  width:min(92vw,500px);
-  transform:translate(-50%,-8px);
+  align-items:center;
+  justify-content:center;
+
   border:1px solid var(--hair);
+  border-radius:50%;
   background:rgba(12,6,10,.82);
   backdrop-filter:blur(12px);
+
   opacity:0;
   pointer-events:none;
-  transition:opacity .35s,transform .35s;
+  transform:translateY(-8px);
+
+  transition:opacity .35s, transform .35s, border-color .3s, background .3s;
+
+  cursor:pointer;
 }
 
-.quick-nav.on{
+.menu-toggle.on{
   opacity:1;
   pointer-events:auto;
-  transform:translate(-50%,0);
+  transform:translateY(0);
 }
 
-.quick-nav a{
-  flex:1;
-  padding:11px 5px;
-  border-right:1px solid var(--hair);
+.menu-toggle:hover,
+.menu-toggle:focus-visible{
+  border-color:var(--neon);
+  background:rgba(255,92,150,.16);
+}
+
+.menu-toggle__bars{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.menu-toggle__bars span{
+  display:block;
+  width:18px;
+  height:1.5px;
+  background:var(--neon-soft);
+  transition:transform .3s, opacity .3s;
+}
+
+.menu-toggle.open .menu-toggle__bars span:nth-child(1){
+  transform:translateY(6.5px) rotate(45deg);
+}
+
+.menu-toggle.open .menu-toggle__bars span:nth-child(2){
+  opacity:0;
+}
+
+.menu-toggle.open .menu-toggle__bars span:nth-child(3){
+  transform:translateY(-6.5px) rotate(-45deg);
+}
+
+.menu-panel{
+  position:fixed;
+  top:calc(max(12px,env(safe-area-inset-top)) + 54px);
+  right:clamp(12px,3.5vw,22px);
+  z-index:54;
+
+  display:flex;
+  flex-direction:column;
+
+  width:min(58vw,220px);
+
+  border:1px solid var(--hair);
+  background:rgba(12,6,10,.92);
+  backdrop-filter:blur(14px);
+
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-8px) scale(.97);
+  transform-origin:top right;
+
+  transition:opacity .3s, transform .3s;
+}
+
+.menu-panel.open{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0) scale(1);
+}
+
+.menu-panel a{
+  padding:13px 18px;
+  border-bottom:1px solid var(--hair);
   color:#d7bec9;
   font-family:"Josefin Sans",sans-serif;
-  font-size:clamp(8px,2.2vw,10px);
-  letter-spacing:.16em;
-  text-align:center;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-align:left;
   text-decoration:none;
   white-space:nowrap;
 }
 
-.quick-nav a:last-child{border-right:0}
+.menu-panel a:last-child{border-bottom:0}
 
-.quick-nav a:hover,
-.quick-nav a:focus-visible{
+.menu-panel a:hover,
+.menu-panel a:focus-visible{
   color:var(--paper);
   background:rgba(255,92,150,.16);
+}
+
+.menu-panel a.menu-panel__home{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--neon-soft);
+  letter-spacing:.24em;
+}
+
+.menu-panel a.menu-panel__home svg{
+  width:13px;
+  height:13px;
+  flex:none;
+  fill:none;
+  stroke:var(--neon-soft);
+  stroke-width:1.8;
 }
 
 /* =========================================================
@@ -1888,11 +1976,36 @@ body{
   aria-hidden="true"
 ></div>
 
-<nav class="quick-nav" id="quick-nav" aria-label="ページ内メニュー">
-  <a href="#menu">MENU</a>
-  <a href="#payment">PAYMENT</a>
-  <a href="#access">ACCESS</a>
-  <a href="#contact">CONTACT</a>
+<button
+  type="button"
+  class="menu-toggle"
+  id="menu-toggle"
+  aria-label="メニューを開く"
+  aria-expanded="false"
+  aria-controls="menu-panel"
+>
+  <span class="menu-toggle__bars" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
+
+<nav class="menu-panel" id="menu-panel" aria-label="ページ内メニュー">
+
+  <a href="#top" class="menu-panel__home" data-menu-link>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 11.5 12 4l8 7.5" />
+      <path d="M6 10v9h5v-5h2v5h5v-9" />
+    </svg>
+    HOME
+  </a>
+
+  <a href="#menu" data-menu-link>MENU</a>
+  <a href="#payment" data-menu-link>PAYMENT</a>
+  <a href="#access" data-menu-link>ACCESS</a>
+  <a href="#contact" data-menu-link>CONTACT</a>
+
 </nav>
 
 
@@ -1911,7 +2024,7 @@ body{
      01 HERO
 ======================================================= -->
 
-<section class="card">
+<section class="card" id="top">
 
   <div class="card__in">
 
@@ -3396,11 +3509,59 @@ cards[0].classList.add('act');
 const fab =
   document.querySelector('.fab');
 
-const quickNav =
-  document.getElementById('quick-nav');
+const menuToggle =
+  document.getElementById('menu-toggle');
+
+const menuPanel =
+  document.getElementById('menu-panel');
 
 const deck =
   document.getElementById('deck');
+
+
+/* =========================================================
+   HAMBURGER MENU (open / close)
+========================================================= */
+
+function closeMenu(){
+  menuToggle.classList.remove('open');
+  menuPanel.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded','false');
+}
+
+function toggleMenu(){
+  const willOpen =
+    !menuPanel.classList.contains('open');
+
+  menuToggle.classList.toggle('open', willOpen);
+  menuPanel.classList.toggle('open', willOpen);
+  menuToggle.setAttribute(
+    'aria-expanded',
+    willOpen ? 'true' : 'false'
+  );
+}
+
+menuToggle.addEventListener('click', toggleMenu);
+
+menuPanel.querySelectorAll('[data-menu-link]').forEach(
+  link => link.addEventListener('click', closeMenu)
+);
+
+document.addEventListener('click', event => {
+  if(
+    menuPanel.classList.contains('open') &&
+    !menuPanel.contains(event.target) &&
+    !menuToggle.contains(event.target)
+  ){
+    closeMenu();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if(event.key === 'Escape'){
+    closeMenu();
+  }
+});
 
 
 function updateFab(){
@@ -3437,10 +3598,14 @@ function updateFab(){
     index < cards.length - 1
   );
 
-  quickNav.classList.toggle(
+  menuToggle.classList.toggle(
     'on',
     index >= 1
   );
+
+  if(index < 1){
+    closeMenu();
+  }
 
 }
 
