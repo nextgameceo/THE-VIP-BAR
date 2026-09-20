@@ -1117,7 +1117,7 @@ body{
 }
 
 .champ-list{
-  columns:2;
+  columns:1;
 
   column-gap:
     clamp(18px,4.6vw,36px);
@@ -1132,12 +1132,17 @@ body{
 
 .list--sm li{
   padding:5px 0;
+  gap:6px;
 
-  font-size:clamp(11px,2.7vw,13px);
+  font-size:clamp(9.5px,2.5vw,13px);
 }
 
 .list--sm .n{
-  letter-spacing:.04em;
+  letter-spacing:.01em;
+}
+
+.list--sm .p{
+  font-size:clamp(10.5px,2.7vw,15px);
 }
 
 @media (min-width:820px){
@@ -1171,12 +1176,24 @@ body{
   }
 
   .champ-list{
+    columns:2;
+
     column-gap:
       clamp(40px,6vw,72px);
   }
 
   .list--sm li{
     padding:7px 0;
+
+    font-size:clamp(12px,1.6vw,14px);
+  }
+
+  .list--sm .n{
+    letter-spacing:.04em;
+  }
+
+  .list--sm .p{
+    font-size:clamp(13px,1.7vw,15px);
   }
 
 }
@@ -2357,61 +2374,61 @@ body{
         </li>
 
         <li>
-          <span class="n">ヴーヴイエロー</span>
+          <span class="n">Veuve Clicquot Yellow</span>
           <span class="d"></span>
           <span class="p">¥30,000</span>
         </li>
 
         <li>
-          <span class="n">ウルトラブリュット</span>
+          <span class="n">Ultra Brut</span>
           <span class="d"></span>
           <span class="p">¥60,000</span>
         </li>
 
         <li>
-          <span class="n">ソウメイ</span>
+          <span class="n">Soumei</span>
           <span class="d"></span>
           <span class="p">¥80,000</span>
         </li>
 
         <li>
-          <span class="n">ベルエポック</span>
+          <span class="n">Belle Epoque</span>
           <span class="d"></span>
           <span class="p">¥100,000</span>
         </li>
 
         <li>
-          <span class="n">ドンペリ ルミナス</span>
+          <span class="n">Dom P&eacute;rignon Luminous</span>
           <span class="d"></span>
           <span class="p">¥120,000</span>
         </li>
 
         <li>
-          <span class="n">クリュグ</span>
+          <span class="n">Krug</span>
           <span class="d"></span>
           <span class="p">¥150,000</span>
         </li>
 
         <li>
-          <span class="n">ソウメイ ブルー</span>
+          <span class="n">Soumei Blue</span>
           <span class="d"></span>
           <span class="p">¥180,000</span>
         </li>
 
         <li>
-          <span class="n">アルマンド ゴールド</span>
+          <span class="n">Armand de Brignac Gold</span>
           <span class="d"></span>
           <span class="p">¥200,000</span>
         </li>
 
         <li>
-          <span class="n">アルマンド グリーン</span>
+          <span class="n">Armand de Brignac Green</span>
           <span class="d"></span>
           <span class="p">¥300,000</span>
         </li>
 
         <li>
-          <span class="n">アルマンド レッド</span>
+          <span class="n">Armand de Brignac Red</span>
           <span class="d"></span>
           <span class="p">¥500,000</span>
         </li>
